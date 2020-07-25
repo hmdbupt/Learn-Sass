@@ -1,0 +1,24 @@
+@import "resets"; // imports the partial file called resets
+@import "variables"; // imports the partial file called variables
+
+// A function that will return the font weight
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+body {
+  background-color: $dark;
+  color: $light;
+}
+
+// Nesting
+.main {
+  width: 80%;
+  margin: 0 auto;
+  #{&}_paragraph {
+    font-weight: weight(bold);
+    font-family: Arial, Helvetica, sans-serif;
+    &:hover {
+      color: $accent;
+    }
+  }
+}
