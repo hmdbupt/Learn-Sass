@@ -5,6 +5,29 @@
 @function weight($weight-name) {
   @return map-get($font-weights, $weight-name);
 }
+
+// A mixin that can reduce repetition
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+// A mixing switching between light and dark themes
+@mixin theme($light-theme: true) {
+  @if $light-theme {
+    background-color: lighten($dark, 100%);
+    color: darken($light, 100%);
+  }
+}
+
+// A mixin for responsive website
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
 body {
   background-color: $dark;
   color: $light;
@@ -12,13 +35,30 @@ body {
 
 // Nesting
 .main {
-  width: 80%;
+  @include flexCenter(column);
+  width: 80% - 20%; // We can also perform mathematical operations in sass
   margin: 0 auto;
-  #{&}_paragraph {
+  #{&}_paragraph_1 {
     font-weight: weight(bold);
     font-family: Arial, Helvetica, sans-serif;
     &:hover {
       color: $accent;
     }
   }
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  #{&}_paragraph_2 {
+    @extend .main_paragraph_1;
+
+    &:hover {
+      color: #888;
+    }
+  }
+}
+
+.light {
+  @include theme($light-theme: true);
 }

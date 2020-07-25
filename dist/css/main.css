@@ -11,16 +11,47 @@ body {
 }
 
 .main {
-  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 60%;
   margin: 0 auto;
 }
 
-.main .main_paragraph {
+.main .main_paragraph_1, .main .main_paragraph_2 {
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.main .main_paragraph:hover {
+.main .main_paragraph_1:hover, .main .main_paragraph_2:hover {
   color: #ff652f;
+}
+
+@media (max-width: 800px) {
+  .main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.main .main_paragraph_2:hover {
+  color: #888;
+}
+
+.light {
+  background-color: white;
+  color: black;
 }
 /*# sourceMappingURL=main.css.map */
